@@ -5,5 +5,11 @@
 # Home page
 GET     /                           controllers.Application.index
 
+# Chapter 1: (Task Tracker application implementation)
+GET     /chapter1                   controllers.chapter1.TaskTracker.home
+GET     /chapter1/tt/tasks          controllers.chapter1.TaskTracker.tasks
+POST    /chapter1/tt/tasks          controllers.chapter1.TaskTracker.addTask
+DELETE  /chapter1/tt/tasks/:id      controllers.chapter1.TaskTracker.delTask(id: Int)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file)
