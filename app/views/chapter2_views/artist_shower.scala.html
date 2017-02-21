@@ -1,0 +1,37 @@
+@import Models.chapter2_models.Artist
+@(artists: Vector[Artist])
+
+@main("Artist Searching and basic server endpoint actions") {
+    @* header for the page: *@
+    @helpers.jumbo_header("Artist helper")
+
+    @* Main content of the page *@
+    <content>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3> <b> Available Artists: </b> </h3>
+                </div>
+
+                <div class="panel-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th> Name </th>
+                                <th> Country </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @artists.map { artist =>
+                            <tr>
+                                <td> @artist.name</td>
+                                <td> @artist.country</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </content>
+}
