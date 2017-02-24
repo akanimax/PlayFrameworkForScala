@@ -18,4 +18,15 @@ object ArtistSearcher extends Controller{
   def searchByName(name: String) = Action {
     Ok(views.html.chapter2_views.found_artists(Artists.fetchByName(name)))
   }
+
+  def searchByNameOrCountry(name: Option[String], country: String, and: Boolean = false) = Action {
+    val result = name match {
+      case Some(n) if and => Artists.fetchByNameAndCountry(n, country)
+      case Some(n) => Artists.fetchByNameOrCountry(n, country)
+      case None => Artists.fetchByCountry(country)
+    }
+
+    if(result.nonEmpty) Ok(views.html.chapter2_views.found_artists(result))
+    else NoContent
+  }
 }

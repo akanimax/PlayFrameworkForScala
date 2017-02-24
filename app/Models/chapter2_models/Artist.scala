@@ -19,18 +19,20 @@ object Artists {
   )
 
   def fetchByName(name: String): Vector[Artist] =
-    availableArtists.filter(artist => artist.name.contains(name))
+    availableArtists.filter(artist => artist.name.toLowerCase().contains(name.toLowerCase()))
 
   def fetchByCountry(country: String): Vector[Artist] =
-    availableArtists.filter(artist => artist.name.contains(country))
+    availableArtists.filter(artist => artist.name.toLowerCase().contains(country.toLowerCase()))
 
   def fetchByNameOrCountry(name: String, country: String): Vector[Artist] =
     availableArtists.filter(artist =>
-      artist.name.contains(name) || artist.country.contains(country))
+      artist.name.toLowerCase().contains(name.toLowerCase())
+        || artist.country.toLowerCase().contains(country.toLowerCase()))
 
   def fetchByNameAndCountry(name: String, country: String): Vector[Artist] =
     availableArtists.filter(artist =>
-      artist.name.contains(name) && artist.country.contains(country))
+      artist.name.toLowerCase().contains(name.toLowerCase())
+        && artist.country.toLowerCase().contains(country.toLowerCase()))
 
   def fetchAllArtists: Vector[Artist] = availableArtists
 }
