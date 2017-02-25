@@ -22,7 +22,7 @@ object Artists {
     availableArtists.filter(artist => artist.name.toLowerCase().contains(name.toLowerCase()))
 
   def fetchByCountry(country: String): Vector[Artist] =
-    availableArtists.filter(artist => artist.name.toLowerCase().contains(country.toLowerCase()))
+    availableArtists.filter(artist => artist.country.toLowerCase().contains(country.toLowerCase()))
 
   def fetchByNameOrCountry(name: String, country: String): Vector[Artist] =
     availableArtists.filter(artist =>

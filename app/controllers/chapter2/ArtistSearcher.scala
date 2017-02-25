@@ -15,15 +15,14 @@ object ArtistSearcher extends Controller{
     Ok(views.html.chapter2_views.artist_shower(Artists.fetchAllArtists))
   }
 
-  def searchByName(name: String) = Action {
-    Ok(views.html.chapter2_views.found_artists(Artists.fetchByName(name)))
-  }
-
-  def searchByNameOrCountry(name: Option[String], country: String, and: Boolean = false) = Action {
-    val result = name match {
-      case Some(n) if and => Artists.fetchByNameAndCountry(n, country)
-      case Some(n) => Artists.fetchByNameOrCountry(n, country)
-      case None => Artists.fetchByCountry(country)
+  //  universal search method
+  def search(name: Option[String], country: Option[String], and: Boolean) = Action {
+    val result = (name, country) match {
+      case (Some(n), Some(c)) if and => Artists.fetchByNameAndCountry(n, c)
+      case (Some(n), Some(c)) => Artists.fetchByNameOrCountry(n, c)
+      case (None, Some(c)) => Artists.fetchByCountry(c)
+      case (Some(n), None) => Artists.fetchByName(n)
+      case (None, None) => Vector() // empty vector
     }
 
     if(result.nonEmpty) Ok(views.html.chapter2_views.found_artists(result))

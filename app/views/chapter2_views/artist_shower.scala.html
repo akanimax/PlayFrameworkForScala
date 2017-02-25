@@ -8,30 +8,84 @@
     @* Main content of the page *@
     <content>
         <div class="container">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3> <b> Available Artists: </b> </h3>
+
+            <section id="section1">
+                <h2 style="font-weight: bold;"> Part 1: <u> Defining Actions </u> </h2>
+                <div class="panel panel-default">
+
+                    <div class="panel-heading" style="font-size: 1.6em; font-weight:bold;">
+                        How to use the SearchApi:
+                    </div>
+
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><b style="font-size: 1.3em;">Search by name:</b>
+                                <div class="well well-sm" style="margin-top: 1%;">
+                                    <h5 class="text-info"> To search an artist by name, use the following
+                                        query</h5>
+                                    <p class="text-danger text-field"> https://mastering-play-for-scala.herokuapp.com/chapter2/artist/search?name=&lt;artist_name&gt; </p>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item"><b style="font-size: 1.3em;">Search by country:</b>
+                                <div class="well well-sm" style="margin-top: 1%;">
+                                    <h5 class="text-info"> To search an artist by country, the query is
+                                        quite similar to the previous</h5>
+                                    <p class="text-danger text-field"> https://mastering-play-for-scala.herokuapp.com/chapter2/artist/search?country=&lt;country_name&gt; </p>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item"><b style="font-size: 1.3em;">Search by name OR country:</b>
+                                <div class="well well-sm" style="margin-top: 1%;">
+                                    <h5 class="text-info"> To search an artist by name <b>OR</b> country,</h5>
+                                    <p class="text-danger text-field"> https://mastering-play-for-scala.herokuapp.com/chapter2/artist/search?name=&lt;artist_name&gt&amp;country=&lt;country_name&gt; </p>
+
+                                    <h5 class="text-info"> The order doesn't really matter</h5>
+                                    <p class="text-danger text-field"> https://mastering-play-for-scala.herokuapp.com/chapter2/artist/search?country=&lt;country_name&gt;&amp;name=&lt;artist_name&gt; </p>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item"><b style="font-size: 1.3em;">Search by name AND country:</b>
+                                <div class="well well-sm" style="margin-top: 1%;">
+                                    <h5 class="text-info"> Just add the and parameter in the above query. Again remember, order doesn't matter.</h5>
+                                    <p class="text-danger text-field"> https://mastering-play-for-scala.herokuapp.com/chapter2/artist/search?name=&lt;artist_name&gt;&amp;country=&lt;country_name&gt;&amp;and=true </p>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
                 </div>
 
-                <div class="panel-body">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th> Name </th>
-                                <th> Country </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @artists.map { artist =>
-                            <tr>
-                                <td> @artist.name</td>
-                                <td> @artist.country</td>
-                            </tr>
-                        }
-                        </tbody>
-                    </table>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3> <b> Available Artists for querying: </b> </h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th> Name </th>
+                                    <th> Country </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @artists.map { artist =>
+                                <tr>
+                                    <td> @artist.name</td>
+                                    <td> @artist.country</td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
+
+        <hr style="height:1px;border:none;color:#333;background-color:#333;
+            margin-top: 20px;">
+        @* A horizontal rule to separate the sections *@
+
     </content>
 }

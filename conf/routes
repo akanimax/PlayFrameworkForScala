@@ -2,6 +2,9 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file)
+
 # Home page
 GET     /                           controllers.Application.index
 
@@ -11,10 +14,8 @@ GET     /chapter1/tt/tasks          controllers.chapter1.TaskTracker.tasks
 POST    /chapter1/tt/tasks          controllers.chapter1.TaskTracker.addTask
 DELETE  /chapter1/tt/tasks/:id      controllers.chapter1.TaskTracker.delTask(id: Int)
 
-# Chapter 1: (Task Tracker application implementation)
+# Chapter 2: (Actions in play tutorial)
 GET     /chapter2                   controllers.chapter2.ArtistSearcher.home
 GET     /chapter2/artist            controllers.chapter2.ArtistSearcher.allArtists
-GET     /chapter2/artist/search     controllers.chapter2.ArtistSearcher.searchByName(name)
-GET     /chapter2/artist/search     controllers.chapter2.ArtistSearcher.searchByNameOrCountry(name: Option[String], country, and: Boolean)
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file)
+GET     /chapter2/artist/search     controllers.chapter2.ArtistSearcher.search(name: Option[String], country: Option[String], and: Boolean?= false)
+
