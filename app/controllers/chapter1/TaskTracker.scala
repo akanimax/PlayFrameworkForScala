@@ -18,8 +18,8 @@ object TaskTracker extends Controller{
   }
 
   def addTask = Action(parse.urlFormEncoded) {
-    implicit request =>
-      TaskList.addTask(request.body.get("taskName").get.head)
+    request =>
+      TaskList.addTask(request.body("taskName").head)
       Redirect(routes.TaskTracker.home)
   }
 
