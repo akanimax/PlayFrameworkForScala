@@ -15,7 +15,10 @@ POST    /chapter1/tt/tasks          controllers.chapter1.TaskTracker.addTask
 DELETE  /chapter1/tt/tasks/:id      controllers.chapter1.TaskTracker.delTask(id: Int)
 
 # Chapter 2: (Actions in play tutorial)
+# Part 1:
 GET     /chapter2                   controllers.chapter2.ArtistSearcher.home
 GET     /chapter2/artist            controllers.chapter2.ArtistSearcher.allArtists
 GET     /chapter2/artist/search     controllers.chapter2.ArtistSearcher.search(name: Option[String], country: Option[String], and: Boolean?= false)
-
+# Part 2:
+POST    /chapter2/subscribe         controllers.chapter2.NewsletterSubscription.subscribe
+GET     /chapter2/adduser           controllers.chapter2.NewsletterSubscription.addUser
