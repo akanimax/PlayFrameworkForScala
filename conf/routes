@@ -21,4 +21,5 @@ GET     /chapter2/artist            controllers.chapter2.ArtistSearcher.allArtis
 GET     /chapter2/artist/search     controllers.chapter2.ArtistSearcher.search(name: Option[String], country: Option[String], and: Boolean?= false)
 # Part 2:
 POST    /chapter2/subscribe         controllers.chapter2.NewsletterSubscription.subscribe
-GET     /chapter2/adduser           controllers.chapter2.NewsletterSubscription.addUser
+POST    /chapter2/adduserPic        controllers.chapter2.NewsletterSubscription.addUserPic
+GET     /chapter2/currentPic        controllers.chapter2.NewsletterSubscription.currentImage

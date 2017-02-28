@@ -1,5 +1,7 @@
 package controllers.chapter2
 
+import java.io.File
+
 import Models.chapter2_models.{Subscriber, SubscriptionList}
 import play.Logger
 import play.api.libs.json.Json
@@ -39,5 +41,38 @@ object NewsletterSubscription extends Controller {
       Ok("Data received: \n" + Json.toJson(subscriber)(Json.writes[Subscriber]))
   }
 
-  def addUser = TODO
+  // accepts 10 MB file upload this limit has been set in the application.conf
+  def addUserPic = Action(parse.multipartFormData) {
+    request =>
+
+      val path = "public/images/media"
+
+      request.body.file("pic") match {
+        case Some(pic) => {
+          // There is indeed some file here
+
+          // check if the file is indeed an image
+          pic.contentType.get.split("/")(0) match {
+            case "image" => {
+              // image file obtained. so save the file
+              val filename = "Source"
+              // save the file in images directory of the project
+              pic.ref.moveTo(new File(s"$path/$filename"), replace = true)
+            }
+
+            case _ => Ok("Uploaded File is not an Image")
+          }
+
+          Ok(views.html.chapter2_views.user_image_added())
+        }
+
+        case None => Ok("File Not selected") // file not uploaded here
+      }
+  }
+
+  def currentImage = Action {
+    Ok(views.html.chapter2_views.current_image())
+  }
+
+
 }

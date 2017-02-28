@@ -1,1 +1,3 @@
-@()
+@main("Current Image on the server") {
+    @helpers.panel_based_image("Current Image on the Server:", routes.Assets.versioned("images/media/Source").toString)
+}

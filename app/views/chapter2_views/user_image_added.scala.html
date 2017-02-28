@@ -1,1 +1,11 @@
-@()
+@main(" Successfully added the Image") {
+    <div class="container">
+        <div class="alert alert-success text-center" style="margin-top: 2%;">
+            <strong class="text-success" style="font-size: 3em;">
+                Received the Image!
+            </strong>
+        </div>
+    </div>
+
+    @helpers.panel_based_image("Uploaded Image: ", routes.Assets.versioned("images/media/Source").toString)
+}
