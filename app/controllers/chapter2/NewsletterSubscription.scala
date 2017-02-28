@@ -4,6 +4,8 @@ import java.io.File
 
 import Models.chapter2_models.{Subscriber, SubscriptionList}
 import play.Logger
+import play.api.Play
+import play.api.Play.current
 import play.api.libs.json.Json
 import play.api.mvc.{Action, BodyParser, Controller}
 
@@ -45,7 +47,9 @@ object NewsletterSubscription extends Controller {
   def addUserPic = Action(parse.multipartFormData) {
     request =>
 
-      val path = "public/images/media"
+      val path = Play.application.path.getAbsolutePath + "/public/images/media/"
+
+      Logger.debug("this is where: " + path)
 
       request.body.file("pic") match {
         case Some(pic) => {
