@@ -8,3 +8,4 @@ This app has been deployed here:
 
 Implemented till now: <br>
 chapter 1: Simple task tracker app 
+chapter 2: Artist helper (all about actions in Play framework)
