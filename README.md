@@ -7,5 +7,5 @@ This app has been deployed here:
 <a href="https://mastering-play-for-scala.herokuapp.com/"> https://mastering-play-for-scala.herokuapp.com/ </a> <br>
 
 Implemented till now: <br>
-chapter 1: Simple task tracker app 
+chapter 1: Simple task tracker app <br>
 chapter 2: Artist helper (all about actions in Play framework)
